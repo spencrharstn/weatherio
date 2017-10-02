@@ -7,19 +7,27 @@
 
         <link href="css/stylesheet.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="img/fa-cloud.png" rel="icon" type="image/x-icon"/>
     </head>
 
     <body>
+        <header>
+            <h1>Weatherio</h1>
+        </header>
         <div class="main-content">
             <div id="temp">&nbsp;</div>
             <div id="minutely">&nbsp;</div>
-
+            <div id="sun">&nbsp;</div>
             <div id="location"></div>
+            <div id="gmaps"></div>
         </div>
         
         <footer class="footer">
-            <p>Powered by <a href="https://darksky.net/poweredby/" target="_blank">Dark Sky</a> | <a href="https://github.com/spencrharstn/weatherio" target="_blank">View on Github</a></p>
+            <p>Powered by | <a href="https://darksky.net/poweredby/" target="_blank">Dark Sky</a> |
+             <a href="https://sunrise-sunset.org/" target="_blank">Sunrise Sunset</a> |
+             <a href="https://github.com/spencrharstn/weatherio" target="_blank">View on Github</a>
+            </p>
         </footer>
         <script src="js/app.js"></script>
 
