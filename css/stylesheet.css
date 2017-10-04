@@ -12,6 +12,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+h1{
+    color: #333333;
+}
+
 a{
     color: #0366d6;
     text-decoration:none;
@@ -26,7 +30,7 @@ a{
 }
 
 footer{
-    padding: 20px 40px;
+    padding: 20px 20px;
 }
 
 footer p{

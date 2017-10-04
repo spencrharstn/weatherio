@@ -1,18 +1,23 @@
-﻿function getLocation() {
+﻿function getLocation(zip) {
     var location = document.getElementById("location");
     location.innerHTML = "Locating...";
 
-    navigator.geolocation.getCurrentPosition(success, error);   //use geolocation api to get user's current location
+    if (zip === undefined) {
+        navigator.geolocation.getCurrentPosition(success, error);   //use geolocation api to get user's current location
+    }
+    else {
+        alert(zip);
+    }
     
     
     function success(position) {
-        //debugger;
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         location.innerHTML = 'Latitude is ' + latitude + '° Longitude is ' + longitude + '°';
-        weather(latitude, longitude);
-        suntimes(position);
-        $('#gmaps').html('<a href=\'https://maps.google.com/maps?q=' + latitude +',' + longitude + '\' target=\'_blank\'>' + "View on Google Maps");
+        $('#gmaps').html('<a href=\'https://maps.google.com/maps?q=' + latitude + ',' + longitude + '\' target=\'_blank\'>' + "View on Google Maps");
+
+        weather(latitude, longitude);   //get the weather
+        suntimes(position);             //get the sunrise/sunset
     }
 
     function error() {
@@ -35,11 +40,16 @@ function weather(lat, long) {
 function suntimes(position) {
     var output = document.getElementById("sun");
     var url = 'https://api.sunrise-sunset.org/json'
-    //debugger;
-    $.getJSON(url + '?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude, function (data) {
-        $('#sun').html("Sunrise: " + data.results.sunrise + ' Sunset: ' + data.results.sunset);
+  
+    $.getJSON(url + '?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude + '&formatted=0', function (data) {
+        sunrise = new Date(data.results.sunrise.toString());    //get the sun times as a date object
+        sunset = new Date(data.results.sunset.toString());
+        sunrise = sunrise.toLocaleTimeString()                  //get the times as local time
+        sunset = sunset.toLocaleTimeString()
+
+        $('#sun').html("Sunrise: " + sunrise + ' Sunset: ' + sunset);
     });
 };
 
 
-getLocation();
+//getLocation();
