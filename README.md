@@ -10,4 +10,4 @@ Move API key somewhere else (is this possible?)
 Add some more APIs for kicks  
 Make pretty
 
-View at <https://spencrharstn.github.io/weatherly/>
+View at <https://spncrhrstn.github.io/weatherly/>
